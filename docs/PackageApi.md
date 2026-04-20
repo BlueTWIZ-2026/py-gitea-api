@@ -1,0 +1,709 @@
+# py_gitea_api.PackageApi
+
+All URIs are relative to *https://localhost/api/v1*
+
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**delete_package**](PackageApi.md#delete_package) | **DELETE** /packages/{owner}/{type}/{name}/{version} | Delete a package
+[**get_latest_package_version**](PackageApi.md#get_latest_package_version) | **GET** /packages/{owner}/{type}/{name}/-/latest | Gets the latest version of a package
+[**get_package**](PackageApi.md#get_package) | **GET** /packages/{owner}/{type}/{name}/{version} | Gets a package
+[**link_package**](PackageApi.md#link_package) | **POST** /packages/{owner}/{type}/{name}/-/link/{repo_name} | Link a package to a repository
+[**list_package_files**](PackageApi.md#list_package_files) | **GET** /packages/{owner}/{type}/{name}/{version}/files | Gets all files of a package
+[**list_package_versions**](PackageApi.md#list_package_versions) | **GET** /packages/{owner}/{type}/{name} | Gets all versions of a package
+[**list_packages**](PackageApi.md#list_packages) | **GET** /packages/{owner} | Gets all packages of an owner
+[**unlink_package**](PackageApi.md#unlink_package) | **POST** /packages/{owner}/{type}/{name}/-/unlink | Unlink a package from a repository
+
+
+# **delete_package**
+> delete_package(owner, type, name, version)
+
+Delete a package
+
+### Example
+```python
+from __future__ import print_function
+import time
+import py_gitea_api
+from py_gitea_api.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: AccessToken
+configuration = py_gitea_api.Configuration()
+configuration.api_key['access_token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['access_token'] = 'Bearer'
+# Configure API key authorization: AuthorizationHeaderToken
+configuration = py_gitea_api.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+# Configure HTTP basic authorization: BasicAuth
+configuration = py_gitea_api.Configuration()
+configuration.username = 'YOUR_USERNAME'
+configuration.password = 'YOUR_PASSWORD'
+# Configure API key authorization: SudoHeader
+configuration = py_gitea_api.Configuration()
+configuration.api_key['Sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Sudo'] = 'Bearer'
+# Configure API key authorization: SudoParam
+configuration = py_gitea_api.Configuration()
+configuration.api_key['sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['sudo'] = 'Bearer'
+# Configure API key authorization: TOTPHeader
+configuration = py_gitea_api.Configuration()
+configuration.api_key['X-GITEA-OTP'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-GITEA-OTP'] = 'Bearer'
+# Configure API key authorization: Token
+configuration = py_gitea_api.Configuration()
+configuration.api_key['token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['token'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = py_gitea_api.PackageApi(py_gitea_api.ApiClient(configuration))
+owner = 'owner_example' # str | owner of the package
+type = 'type_example' # str | type of the package
+name = 'name_example' # str | name of the package
+version = 'version_example' # str | version of the package
+
+try:
+    # Delete a package
+    api_instance.delete_package(owner, type, name, version)
+except ApiException as e:
+    print("Exception when calling PackageApi->delete_package: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **owner** | **str**| owner of the package | 
+ **type** | **str**| type of the package | 
+ **name** | **str**| name of the package | 
+ **version** | **str**| version of the package | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain
+ - **Accept**: application/json, text/html
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_latest_package_version**
+> Package get_latest_package_version(owner, type, name)
+
+Gets the latest version of a package
+
+### Example
+```python
+from __future__ import print_function
+import time
+import py_gitea_api
+from py_gitea_api.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: AccessToken
+configuration = py_gitea_api.Configuration()
+configuration.api_key['access_token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['access_token'] = 'Bearer'
+# Configure API key authorization: AuthorizationHeaderToken
+configuration = py_gitea_api.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+# Configure HTTP basic authorization: BasicAuth
+configuration = py_gitea_api.Configuration()
+configuration.username = 'YOUR_USERNAME'
+configuration.password = 'YOUR_PASSWORD'
+# Configure API key authorization: SudoHeader
+configuration = py_gitea_api.Configuration()
+configuration.api_key['Sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Sudo'] = 'Bearer'
+# Configure API key authorization: SudoParam
+configuration = py_gitea_api.Configuration()
+configuration.api_key['sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['sudo'] = 'Bearer'
+# Configure API key authorization: TOTPHeader
+configuration = py_gitea_api.Configuration()
+configuration.api_key['X-GITEA-OTP'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-GITEA-OTP'] = 'Bearer'
+# Configure API key authorization: Token
+configuration = py_gitea_api.Configuration()
+configuration.api_key['token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['token'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = py_gitea_api.PackageApi(py_gitea_api.ApiClient(configuration))
+owner = 'owner_example' # str | owner of the package
+type = 'type_example' # str | type of the package
+name = 'name_example' # str | name of the package
+
+try:
+    # Gets the latest version of a package
+    api_response = api_instance.get_latest_package_version(owner, type, name)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling PackageApi->get_latest_package_version: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **owner** | **str**| owner of the package | 
+ **type** | **str**| type of the package | 
+ **name** | **str**| name of the package | 
+
+### Return type
+
+[**Package**](Package.md)
+
+### Authorization
+
+[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_package**
+> Package get_package(owner, type, name, version)
+
+Gets a package
+
+### Example
+```python
+from __future__ import print_function
+import time
+import py_gitea_api
+from py_gitea_api.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: AccessToken
+configuration = py_gitea_api.Configuration()
+configuration.api_key['access_token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['access_token'] = 'Bearer'
+# Configure API key authorization: AuthorizationHeaderToken
+configuration = py_gitea_api.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+# Configure HTTP basic authorization: BasicAuth
+configuration = py_gitea_api.Configuration()
+configuration.username = 'YOUR_USERNAME'
+configuration.password = 'YOUR_PASSWORD'
+# Configure API key authorization: SudoHeader
+configuration = py_gitea_api.Configuration()
+configuration.api_key['Sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Sudo'] = 'Bearer'
+# Configure API key authorization: SudoParam
+configuration = py_gitea_api.Configuration()
+configuration.api_key['sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['sudo'] = 'Bearer'
+# Configure API key authorization: TOTPHeader
+configuration = py_gitea_api.Configuration()
+configuration.api_key['X-GITEA-OTP'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-GITEA-OTP'] = 'Bearer'
+# Configure API key authorization: Token
+configuration = py_gitea_api.Configuration()
+configuration.api_key['token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['token'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = py_gitea_api.PackageApi(py_gitea_api.ApiClient(configuration))
+owner = 'owner_example' # str | owner of the package
+type = 'type_example' # str | type of the package
+name = 'name_example' # str | name of the package
+version = 'version_example' # str | version of the package
+
+try:
+    # Gets a package
+    api_response = api_instance.get_package(owner, type, name, version)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling PackageApi->get_package: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **owner** | **str**| owner of the package | 
+ **type** | **str**| type of the package | 
+ **name** | **str**| name of the package | 
+ **version** | **str**| version of the package | 
+
+### Return type
+
+[**Package**](Package.md)
+
+### Authorization
+
+[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **link_package**
+> link_package(owner, type, name, repo_name)
+
+Link a package to a repository
+
+### Example
+```python
+from __future__ import print_function
+import time
+import py_gitea_api
+from py_gitea_api.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: AccessToken
+configuration = py_gitea_api.Configuration()
+configuration.api_key['access_token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['access_token'] = 'Bearer'
+# Configure API key authorization: AuthorizationHeaderToken
+configuration = py_gitea_api.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+# Configure HTTP basic authorization: BasicAuth
+configuration = py_gitea_api.Configuration()
+configuration.username = 'YOUR_USERNAME'
+configuration.password = 'YOUR_PASSWORD'
+# Configure API key authorization: SudoHeader
+configuration = py_gitea_api.Configuration()
+configuration.api_key['Sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Sudo'] = 'Bearer'
+# Configure API key authorization: SudoParam
+configuration = py_gitea_api.Configuration()
+configuration.api_key['sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['sudo'] = 'Bearer'
+# Configure API key authorization: TOTPHeader
+configuration = py_gitea_api.Configuration()
+configuration.api_key['X-GITEA-OTP'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-GITEA-OTP'] = 'Bearer'
+# Configure API key authorization: Token
+configuration = py_gitea_api.Configuration()
+configuration.api_key['token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['token'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = py_gitea_api.PackageApi(py_gitea_api.ApiClient(configuration))
+owner = 'owner_example' # str | owner of the package
+type = 'type_example' # str | type of the package
+name = 'name_example' # str | name of the package
+repo_name = 'repo_name_example' # str | name of the repository to link.
+
+try:
+    # Link a package to a repository
+    api_instance.link_package(owner, type, name, repo_name)
+except ApiException as e:
+    print("Exception when calling PackageApi->link_package: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **owner** | **str**| owner of the package | 
+ **type** | **str**| type of the package | 
+ **name** | **str**| name of the package | 
+ **repo_name** | **str**| name of the repository to link. | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain
+ - **Accept**: application/json, text/html
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **list_package_files**
+> list[PackageFile] list_package_files(owner, type, name, version)
+
+Gets all files of a package
+
+### Example
+```python
+from __future__ import print_function
+import time
+import py_gitea_api
+from py_gitea_api.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: AccessToken
+configuration = py_gitea_api.Configuration()
+configuration.api_key['access_token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['access_token'] = 'Bearer'
+# Configure API key authorization: AuthorizationHeaderToken
+configuration = py_gitea_api.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+# Configure HTTP basic authorization: BasicAuth
+configuration = py_gitea_api.Configuration()
+configuration.username = 'YOUR_USERNAME'
+configuration.password = 'YOUR_PASSWORD'
+# Configure API key authorization: SudoHeader
+configuration = py_gitea_api.Configuration()
+configuration.api_key['Sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Sudo'] = 'Bearer'
+# Configure API key authorization: SudoParam
+configuration = py_gitea_api.Configuration()
+configuration.api_key['sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['sudo'] = 'Bearer'
+# Configure API key authorization: TOTPHeader
+configuration = py_gitea_api.Configuration()
+configuration.api_key['X-GITEA-OTP'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-GITEA-OTP'] = 'Bearer'
+# Configure API key authorization: Token
+configuration = py_gitea_api.Configuration()
+configuration.api_key['token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['token'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = py_gitea_api.PackageApi(py_gitea_api.ApiClient(configuration))
+owner = 'owner_example' # str | owner of the package
+type = 'type_example' # str | type of the package
+name = 'name_example' # str | name of the package
+version = 'version_example' # str | version of the package
+
+try:
+    # Gets all files of a package
+    api_response = api_instance.list_package_files(owner, type, name, version)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling PackageApi->list_package_files: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **owner** | **str**| owner of the package | 
+ **type** | **str**| type of the package | 
+ **name** | **str**| name of the package | 
+ **version** | **str**| version of the package | 
+
+### Return type
+
+[**list[PackageFile]**](PackageFile.md)
+
+### Authorization
+
+[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **list_package_versions**
+> list[Package] list_package_versions(owner, type, name, page=page, limit=limit)
+
+Gets all versions of a package
+
+### Example
+```python
+from __future__ import print_function
+import time
+import py_gitea_api
+from py_gitea_api.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: AccessToken
+configuration = py_gitea_api.Configuration()
+configuration.api_key['access_token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['access_token'] = 'Bearer'
+# Configure API key authorization: AuthorizationHeaderToken
+configuration = py_gitea_api.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+# Configure HTTP basic authorization: BasicAuth
+configuration = py_gitea_api.Configuration()
+configuration.username = 'YOUR_USERNAME'
+configuration.password = 'YOUR_PASSWORD'
+# Configure API key authorization: SudoHeader
+configuration = py_gitea_api.Configuration()
+configuration.api_key['Sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Sudo'] = 'Bearer'
+# Configure API key authorization: SudoParam
+configuration = py_gitea_api.Configuration()
+configuration.api_key['sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['sudo'] = 'Bearer'
+# Configure API key authorization: TOTPHeader
+configuration = py_gitea_api.Configuration()
+configuration.api_key['X-GITEA-OTP'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-GITEA-OTP'] = 'Bearer'
+# Configure API key authorization: Token
+configuration = py_gitea_api.Configuration()
+configuration.api_key['token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['token'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = py_gitea_api.PackageApi(py_gitea_api.ApiClient(configuration))
+owner = 'owner_example' # str | owner of the package
+type = 'type_example' # str | type of the package
+name = 'name_example' # str | name of the package
+page = 56 # int | page number of results to return (1-based) (optional)
+limit = 56 # int | page size of results (optional)
+
+try:
+    # Gets all versions of a package
+    api_response = api_instance.list_package_versions(owner, type, name, page=page, limit=limit)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling PackageApi->list_package_versions: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **owner** | **str**| owner of the package | 
+ **type** | **str**| type of the package | 
+ **name** | **str**| name of the package | 
+ **page** | **int**| page number of results to return (1-based) | [optional] 
+ **limit** | **int**| page size of results | [optional] 
+
+### Return type
+
+[**list[Package]**](Package.md)
+
+### Authorization
+
+[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **list_packages**
+> list[Package] list_packages(owner, page=page, limit=limit, type=type, q=q)
+
+Gets all packages of an owner
+
+### Example
+```python
+from __future__ import print_function
+import time
+import py_gitea_api
+from py_gitea_api.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: AccessToken
+configuration = py_gitea_api.Configuration()
+configuration.api_key['access_token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['access_token'] = 'Bearer'
+# Configure API key authorization: AuthorizationHeaderToken
+configuration = py_gitea_api.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+# Configure HTTP basic authorization: BasicAuth
+configuration = py_gitea_api.Configuration()
+configuration.username = 'YOUR_USERNAME'
+configuration.password = 'YOUR_PASSWORD'
+# Configure API key authorization: SudoHeader
+configuration = py_gitea_api.Configuration()
+configuration.api_key['Sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Sudo'] = 'Bearer'
+# Configure API key authorization: SudoParam
+configuration = py_gitea_api.Configuration()
+configuration.api_key['sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['sudo'] = 'Bearer'
+# Configure API key authorization: TOTPHeader
+configuration = py_gitea_api.Configuration()
+configuration.api_key['X-GITEA-OTP'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-GITEA-OTP'] = 'Bearer'
+# Configure API key authorization: Token
+configuration = py_gitea_api.Configuration()
+configuration.api_key['token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['token'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = py_gitea_api.PackageApi(py_gitea_api.ApiClient(configuration))
+owner = 'owner_example' # str | owner of the packages
+page = 56 # int | page number of results to return (1-based) (optional)
+limit = 56 # int | page size of results (optional)
+type = 'type_example' # str | package type filter (optional)
+q = 'q_example' # str | name filter (optional)
+
+try:
+    # Gets all packages of an owner
+    api_response = api_instance.list_packages(owner, page=page, limit=limit, type=type, q=q)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling PackageApi->list_packages: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **owner** | **str**| owner of the packages | 
+ **page** | **int**| page number of results to return (1-based) | [optional] 
+ **limit** | **int**| page size of results | [optional] 
+ **type** | **str**| package type filter | [optional] 
+ **q** | **str**| name filter | [optional] 
+
+### Return type
+
+[**list[Package]**](Package.md)
+
+### Authorization
+
+[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **unlink_package**
+> unlink_package(owner, type, name)
+
+Unlink a package from a repository
+
+### Example
+```python
+from __future__ import print_function
+import time
+import py_gitea_api
+from py_gitea_api.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: AccessToken
+configuration = py_gitea_api.Configuration()
+configuration.api_key['access_token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['access_token'] = 'Bearer'
+# Configure API key authorization: AuthorizationHeaderToken
+configuration = py_gitea_api.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+# Configure HTTP basic authorization: BasicAuth
+configuration = py_gitea_api.Configuration()
+configuration.username = 'YOUR_USERNAME'
+configuration.password = 'YOUR_PASSWORD'
+# Configure API key authorization: SudoHeader
+configuration = py_gitea_api.Configuration()
+configuration.api_key['Sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Sudo'] = 'Bearer'
+# Configure API key authorization: SudoParam
+configuration = py_gitea_api.Configuration()
+configuration.api_key['sudo'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['sudo'] = 'Bearer'
+# Configure API key authorization: TOTPHeader
+configuration = py_gitea_api.Configuration()
+configuration.api_key['X-GITEA-OTP'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['X-GITEA-OTP'] = 'Bearer'
+# Configure API key authorization: Token
+configuration = py_gitea_api.Configuration()
+configuration.api_key['token'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['token'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = py_gitea_api.PackageApi(py_gitea_api.ApiClient(configuration))
+owner = 'owner_example' # str | owner of the package
+type = 'type_example' # str | type of the package
+name = 'name_example' # str | name of the package
+
+try:
+    # Unlink a package from a repository
+    api_instance.unlink_package(owner, type, name)
+except ApiException as e:
+    print("Exception when calling PackageApi->unlink_package: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **owner** | **str**| owner of the package | 
+ **type** | **str**| type of the package | 
+ **name** | **str**| name of the package | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[AccessToken](../README.md#AccessToken), [AuthorizationHeaderToken](../README.md#AuthorizationHeaderToken), [BasicAuth](../README.md#BasicAuth), [SudoHeader](../README.md#SudoHeader), [SudoParam](../README.md#SudoParam), [TOTPHeader](../README.md#TOTPHeader), [Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/plain
+ - **Accept**: application/json, text/html
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
